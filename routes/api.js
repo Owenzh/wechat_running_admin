@@ -16,6 +16,19 @@ router.post('/article_post', function (req, res, next) {
   });
 });
 
+router.put('/article_post', function (req, res, next) {
+  let params = null;
+  params = req.body.params;
+  // console.log(params);
+  request.put('https://wzh7tfqg.qcloud.la/weapp/article_post', { form: params }, function (_err, _res, _body) {
+    if (_err) {
+      res.send(_err);
+    }
+    console.log(_body)
+    res.send(_body);
+  });
+});
+
 router.get('/article_list', function (req, res, next) {
   request.get('https://wzh7tfqg.qcloud.la/weapp/article_list', function (_err, _res, _body) {
     if (_err) {
